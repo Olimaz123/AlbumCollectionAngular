@@ -1,0 +1,26 @@
+{
+    "albums": [
+        {
+	    "id": 1,
+            "Artist": "AC/DC",
+            "Album": "For Those About to Rock",
+            "Year": "1981",
+            "Type": "LP",
+            "Label": "Atlantic",
+	    "inCollection": true,
+            "inFavs": false,
+	    "inWishlist": false
+        },
+        {
+	    "id": 2,
+            "Artist": "Accept",
+            "Album": "Restless and Wild",
+            "Year": "1982",
+            "Type": "LP",
+            "Label": "Brain Records",
+	    "inCollection": true,
+            "inFavs": false,
+	    "inWishlist": false
+        }
+    ]
+}

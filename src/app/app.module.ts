@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
@@ -11,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollectionComponent } from './collection/collection.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import {Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', component: MainMenuComponent},
@@ -33,10 +34,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
