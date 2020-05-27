@@ -1,14 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { TitleFormatPipe } from './title-format.pipe';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollectionComponent } from './collection/collection.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import {Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: MainMenuComponent},
+  { path: 'wishlist', component: WishlistComponent},
+  { path: 'favourites', component: FavouritesComponent},
+  { path: 'collection', component: CollectionComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TitleFormatPipe,
+    MainMenuComponent,
+    ItemDetailsComponent,
+    AddItemComponent,
+    CollectionComponent,
+    FavouritesComponent,
+    WishlistComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
