@@ -10,16 +10,11 @@ import {Album} from '../album.model';
 })
 export class CollectionComponent implements OnInit {
   public albums: Album[];
-  // public albumsReal: Album[];
-  // public filler: Album;
-  // public id: number;
   constructor(private albumsService: AlbumsService) { }
 
   ngOnInit(): void {
     this.albums = [];
-    // this.albumsReal = [];
     this.onGetAlbums();
-    // this.id = 0;
   }
 
   onGetAlbums() {
@@ -28,11 +23,6 @@ export class CollectionComponent implements OnInit {
         JSON.parse(JSON.stringify(response));
         console.log(response);
         this.albums = response;
-        // while (this.albums.length() > this.id) {
-        //   this.filler = this.albums[this.id];
-        //   this.albumsReal.push(this.filler);
-        //   this.id++;
-        // }
       },
       (error) => console.log(error),
       () => console.log('done')

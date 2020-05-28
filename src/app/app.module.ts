@@ -13,6 +13,8 @@ import { CollectionComponent } from './collection/collection.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import {RouterModule, Routes} from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const appRoutes: Routes = [
   { path: '', component: CollectionComponent},
@@ -37,6 +39,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

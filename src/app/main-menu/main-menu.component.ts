@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AddItemComponent} from '../add-item/add-item.component';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public matDialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = 'add-component';
+    dialogConfig.height = '350px';
+    dialogConfig.width = '500px';
+    const modalDialog = this.matDialog.open(AddItemComponent, dialogConfig);
   }
 
 }

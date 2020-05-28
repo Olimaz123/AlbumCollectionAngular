@@ -1,1 +1,60 @@
-<p>add-item works!</p>
+<h2>Add Album</h2>
+
+<form>
+  <div class="form-row">
+    <div class="col">
+      <input type="text" name="artist" class="form-control" placeholder="artist name" maxlength="50" required [(ngModel)]="album.artist">
+    </div>
+    <div class="col">
+      <input type="text" name="album" class="form-control" placeholder="album title" maxlength="50" required [(ngModel)]="album.album">
+    </div>
+  </div>
+
+  <p></p>
+
+  <div class="form-row">
+    <div class="col">
+      <input type="text" name="Year" class="form-control" inputmode="numeric" placeholder="1990" maxlength="4" pattern="[0-9]*" required [(ngModel)]="album.year">
+    </div>
+    <div class="col">
+      <select class="custom-select" id="typeselect" required [(ngModel)]="album.type">
+        <option value="LP">LP</option>
+        <option value="EP">EP</option>
+        <option value="CD">CD</option>
+        <option value="Cassette">Cassette</option>
+        <option value="Single">Single</option>
+        <option value="Digital">Digital</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="col">
+      <div class="form-check">
+        <input type="checkbox" name="favourite" class="form-check-input" id="favCheck" value="" [(ngModel)]="album.inFavs">
+        <label for="favCheck" class="form-check-label">Add to favourites?</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" name="collection" class="form-check-input" id="collRadio" value="inCollection" checked [(ngModel)]="album.inCollection">
+        <label for="collRadio" class="form-check-label">Add to collection</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" name="collection" class="form-check-input" id="wishRadio" value="onWishlist" [(ngModel)]="album.inWishlist">
+        <label for="wishRadio" class="form-check-label">Add to wishlist</label>
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+
+  <div class="form-row">
+    <div class="col">
+      <input type="text" name="label" class="form-control" placeholder="Record label" maxlength="50" required [(ngModel)]="album.label">
+    </div>
+  </div>
+
+  <p></p>
+
+  <footer>
+    <button type="submit" class="btn btn-primary" id="saveButton" (click)="saveAlbum()">Save Album</button>
+    <button type="button" class="btn btn-danger" id="cancelButton" (click)="closeDialog()">Cancel</button>
+  </footer>
+</form>
