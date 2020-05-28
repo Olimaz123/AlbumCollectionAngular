@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/index';
 import {HttpClient} from '@angular/common/http';
+import {Album} from './album.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumsService {
+  albums: Album[];
 
   constructor(private http: HttpClient) {}
 
-  addAlbum(album) {
-    // var collection = JSON.parse(data.json);
-    // this.collection.push(album);
+  getAlbums(): Observable<Album[]> {
+    const url = 'http://localhost:3000/albums?inCollection=true';
+    return this.http.get<Album[]>(url);
   }
 
-  getAlbums(): Observable<Album[]> {
-    const url = 'http://localhost:3000/albums';
+  getFavAlbums(): Observable<Album[]> {
+    const url = 'http://localhost:3000/albums?inFavs=true';
     return this.http.get<Album[]>(url);
-    // return this.albums;
+  }
+
+  getWishAlbums(): Observable<Album[]> {
+    const url = 'http://localhost:3000/albums?inWishlist=true';
+    return this.http.get<Album[]>(url);
+  }
+
+
+  getAlbum(id: number) {
+    const url = 'http://localhost:3000/albums/' + id;
+    return this.http.get<Album>(url);
   }
 
   deleteAlbum() {}
@@ -25,15 +37,4 @@ export class AlbumsService {
   updateAlbum() {}
 }
 
-export class Album {
-  id: number;
-  artist: string;
-  album: string;
-  type: string;
-  year: number;
-  label: string;
-  inCollection: boolean;
-  inFavs: boolean;
-  inWishlist: boolean;
-}
 

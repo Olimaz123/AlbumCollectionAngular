@@ -12,7 +12,11 @@
   <!--</ul>-->
 <!--</div>-->
 <div id="collection-content">
-COLLECTION WORKS
-  <p>{{albums}}</p>
+  <div *ngFor="let album of albums ">
+    {{album}}
+  </div>
+  {{albums[0]}}
+  <!--{{ albums[0]| json }}-->
+
 </div>
 

@@ -15,7 +15,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: '', component: MainMenuComponent},
+  { path: '', component: CollectionComponent},
   { path: 'wishlist', component: WishlistComponent},
   { path: 'favourites', component: FavouritesComponent},
   { path: 'collection', component: CollectionComponent}
