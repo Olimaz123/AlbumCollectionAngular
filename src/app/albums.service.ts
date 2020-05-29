@@ -16,6 +16,11 @@ export class AlbumsService {
     return this.http.get<Album[]>(url);
   }
 
+  addAlbum(album: Album): Observable<Album> {
+    const url = 'http://localhost:3000/albums';
+    return this.http.post<Album>(url, album);
+  }
+
   getFavAlbums(): Observable<Album[]> {
     const url = 'http://localhost:3000/albums?inFavs=true';
     return this.http.get<Album[]>(url);
@@ -32,9 +37,15 @@ export class AlbumsService {
     return this.http.get<Album>(url);
   }
 
-  deleteAlbum() {}
+  deleteAlbum(id: number) {
+    const url = 'http://localhost:3000/albums/' + id;
+    return this.http.delete<Album>(url);
+  }
 
-  updateAlbum() {}
+  updateAlbum(album: Album): Observable<Album> {
+    const url = 'http://localhost:3000/albums' + album.id;
+    return this.http.put<Album>(url, album);
+  }
 }
 
 

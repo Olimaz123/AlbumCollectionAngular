@@ -15,6 +15,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import {RouterModule, Routes} from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 
 const appRoutes: Routes = [
   { path: '', component: CollectionComponent},
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    MatCardModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

@@ -1,0 +1,8 @@
+#collection-content{
+  width: 100vh;
+}
+
+mat-card{
+  max-width: 350px;
+  border: solid 1px black;
+}

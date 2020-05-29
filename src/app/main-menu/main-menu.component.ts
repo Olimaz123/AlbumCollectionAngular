@@ -17,7 +17,7 @@ export class MainMenuComponent implements OnInit {
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = 'add-component';
+    dialogConfig.id = 'item-details';
     dialogConfig.height = '350px';
     dialogConfig.width = '500px';
     const modalDialog = this.matDialog.open(AddItemComponent, dialogConfig);

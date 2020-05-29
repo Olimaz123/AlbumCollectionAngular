@@ -14,17 +14,13 @@
 
   <div class="form-row">
     <div class="col">
-      <input type="text" name="Year" class="form-control" inputmode="numeric" placeholder="1990" maxlength="4" pattern="[0-9]*" required [(ngModel)]="album.year">
+      <input type="text" name="Year" class="form-control" inputmode="numeric" placeholder="2020" maxlength="4" pattern="[0-9]*" required [(ngModel)]="album.year">
     </div>
     <div class="col">
-      <select class="custom-select" id="typeselect" required [(ngModel)]="album.type">
-        <option value="LP">LP</option>
-        <option value="EP">EP</option>
-        <option value="CD">CD</option>
-        <option value="Cassette">Cassette</option>
-        <option value="Single">Single</option>
-        <option value="Digital">Digital</option>
-        <option value="Other">Other</option>
+      <select name="typeselect" class="custom-select" id="typeselect" [(ngModel)]="selectedType">
+        <option *ngFor="let t of types">
+          {{t.name}}
+        </option>
       </select>
     </div>
     <div class="col">
@@ -33,11 +29,11 @@
         <label for="favCheck" class="form-check-label">Add to favourites?</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="collection" class="form-check-input" id="collRadio" value="inCollection" checked [(ngModel)]="album.inCollection">
+        <input type="radio" name="collection" class="form-check-input" id="collRadio" value="inCollection" [(ngModel)]="inColl" [value]="true">
         <label for="collRadio" class="form-check-label">Add to collection</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="collection" class="form-check-input" id="wishRadio" value="onWishlist" [(ngModel)]="album.inWishlist">
+        <input type="radio" name="collection" class="form-check-input" id="wishRadio" value="onWishlist" [(ngModel)]="inColl" [value]="false">
         <label for="wishRadio" class="form-check-label">Add to wishlist</label>
       </div>
     </div>
