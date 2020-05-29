@@ -4,6 +4,7 @@ import {Album} from '../album.model';
 import {MatCard} from '@angular/material/card';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ItemDetailsComponent} from '../item-details/item-details.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,46 +13,23 @@ import {ItemDetailsComponent} from '../item-details/item-details.component';
   styleUrls: ['./collection.component.css'],
   providers: [AlbumsService]
 })
+
 export class CollectionComponent implements OnInit {
-  // public albums2: Album[];
+
   public albums: Album[];
   public albumid: number;
-  @Output() dataEvent = new EventEmitter<number>();
-  constructor(private albumsService: AlbumsService, private matDialog: MatDialog) { }
+  // @Output() dataEvent = new EventEmitter<number>();
+  constructor(private albumService: AlbumsService, /*private matDialog: MatDialog,*/ private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    // this.albumsService.currentAlbum.subscribe(albumid => this.albumid = albumid);
     this.albums = [];
     this.albumid = null;
-
-    // this.albums2 = [
-    //   {
-    //     id: 1,
-    //     artist: 'AC/DC',
-    //     album: 'For Those About to Rock',
-    //     year: 1981,
-    //     type: 'LP',
-    //     label: 'Atlantic',
-    //     inCollection: true,
-    //     inFavs: false,
-    //     inWishlist: false
-    //   },
-    //   {
-    //     id: 2,
-    //     artist: 'Accept',
-    //     album: 'Restless and Wild',
-    //     year: 1982,
-    //     type: 'LP',
-    //     label: 'Brain Records',
-    //     inCollection: true,
-    //     inFavs: false,
-    //     inWishlist: false
-    //   }
-    // ];
     this.onGetAlbums();
   }
 
   onGetAlbums() {
-    this.albumsService.getAlbums().subscribe(
+    this.albumService.getAlbums().subscribe(
       (response: Album[]) => {
         JSON.parse(JSON.stringify(response));
         console.log(response);
@@ -62,16 +40,18 @@ export class CollectionComponent implements OnInit {
     );
   }
 
-  openDetails(albumid: number) {
+  openDetails(albumToOpen: number) {
     console.log('opening details');
-    console.log(albumid);
-    this.dataEvent.emit(albumid);
-    this.albumid = albumid;
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.id = 'item-details';
-    dialogConfig.height = '600px';
-    dialogConfig.width = '500px';
-    const modalDialog = this.matDialog.open(ItemDetailsComponent, dialogConfig);
+    console.log(albumToOpen);
+    this.albumid = albumToOpen;
+    const modalRef = this.modalService.open(ItemDetailsComponent);
+    modalRef.componentInstance.albumid = this.albumid;
+    // this.albumService.changeAlbum(albumId);
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.id = 'item-details';
+    // dialogConfig.height = '600px';
+    // dialogConfig.width = '500px';
+    // const modalDialog = this.matDialog.open(ItemDetailsComponent, dialogConfig);
   }
 }

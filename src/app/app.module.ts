@@ -16,6 +16,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: CollectionComponent},
@@ -43,10 +44,12 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ItemDetailsComponent]
 })
 export class AppModule { }
 

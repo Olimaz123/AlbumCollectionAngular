@@ -1,26 +1,48 @@
 {
-    "albums": [
-        {
-	    "id": 1,
-            "artist": "AC/DC",
-            "album": "For Those About to Rock",
-            "year": 1981,
-            "type": "LP",
-            "label": "Atlantic",
-	    "inCollection": true,
-            "inFavs": false,
-	    "inWishlist": false
-        },
-        {
-	    "id": 2,
-            "artist": "Accept",
-            "album": "Restless and Wild",
-            "year": 1982,
-            "type": "LP",
-            "label": "Brain Records",
-	    "inCollection": true,
-            "inFavs": false,
-	    "inWishlist": false
-        }
-    ]
+  "albums": [
+    {
+      "id": 1,
+      "artist": "AC/DC",
+      "album": "For Those About to Rock",
+      "year": 1981,
+      "type": "LP",
+      "label": "Atlantic",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
+    },
+    {
+      "id": 2,
+      "artist": "Accept",
+      "album": "Restless and Wild",
+      "year": 1982,
+      "type": "LP",
+      "label": "Brain Records",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
+    },
+    {
+      "id": 3,
+      "album": "TEST",
+      "artist": "TEST",
+      "year": "2002",
+      "type": "LP",
+      "label": "TEST",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
+    },
+    {
+      "id": 4,
+      "album": "TESTALBUM",
+      "artist": "TESTNAME",
+      "year": "2015",
+      "type": "Cassette",
+      "label": "TESTLABEL",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
+    }
+  ]
 }

@@ -10,16 +10,33 @@ import {AlbumsService} from '../albums.service';
 })
 export class ItemDetailsComponent implements OnInit {
 
-  @Input() albumnumber: number;
+  @Input() public albumid;
+
+  // @Input() albumnumber: number;
   public album: Album;
-  constructor(public dialogRef: MatDialogRef<ItemDetailsComponent>, private albumService: AlbumsService) { }
+  // public albumid: number;
+  constructor(/*public dialogRef: MatDialogRef<ItemDetailsComponent>,*/ private albumService: AlbumsService) { }
 
   ngOnInit(): void {
-    // this.receiveData()
+    this.album = {
+      id: null,
+      album: '',
+      artist: '',
+      year: null,
+      type: '',
+      label: '',
+      inCollection: false,
+      inFavs: false,
+      inWishlist: false
+    };
+    // this.albumid = 0;
+    // this.albumService.currentAlbum.subscribe(response => this.albumid = response);
+    this.getAlbum();
+    console.log(this.albumid);
   }
 
   getAlbum() {
-    this.albumService.getAlbum(this.albumnumber).subscribe(
+    this.albumService.getAlbum(this.albumid).subscribe(
       (response: Album) => {
         this.album = response;
       }
@@ -30,8 +47,8 @@ export class ItemDetailsComponent implements OnInit {
   //   this.albumid = $event;
   // }
 
-  close() {
-    this.dialogRef.close();
-  }
+  // close() {
+  //   this.dialogRef.close();
+  // }
 
 }

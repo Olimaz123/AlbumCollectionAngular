@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {Album} from '../album.model';
+import {AlbumsService} from '../albums.service';
 
 @Component({
   selector: 'app-add-item',
@@ -25,7 +26,7 @@ export class AddItemComponent implements OnInit {
   selectedType: string;
   album: Album;
 
-  constructor(public dialogRef: MatDialogRef<AddItemComponent>) { }
+  constructor(public dialogRef: MatDialogRef<AddItemComponent>, private albumService: AlbumsService) { }
 
   ngOnInit(): void {
     this.album = {
@@ -57,6 +58,11 @@ export class AddItemComponent implements OnInit {
       this.album.inWishlist = true;
     }
     console.log(this.album);
+    const newAlbum: Album = this.album;
+    this.albumService.addAlbum(newAlbum).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
     this.dialogRef.close();
   }
 
