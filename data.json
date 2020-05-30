@@ -87,6 +87,17 @@
       "inCollection": true,
       "inFavs": false,
       "inWishlist": false
+    },
+    {
+      "id": 13,
+      "album": "Heir To Despair",
+      "artist": "SIGH",
+      "year": "2018",
+      "type": "LP",
+      "label": "unknown",
+      "inCollection": false,
+      "inFavs": false,
+      "inWishlist": true
     }
   ]
 }

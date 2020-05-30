@@ -1,0 +1,10 @@
+
+#wishlist-content{
+  width: 100%;
+}
+.card {
+  width: 18rem;
+  border: solid 1px black;
+  box-shadow: #343a40;
+  background-color: #e0e0e0;
+}

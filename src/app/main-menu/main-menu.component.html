@@ -8,8 +8,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="Search" [(ngModel)]="searchTerm">
+      <a class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/results" (click)="onSearch()">Search</a>
     </form>
   </div>
 </nav>
@@ -33,12 +33,13 @@
   <!--content goes here-->
   <div id="content">
     <div class="row">
-      <!--<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">-->
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="nav nav-tabs">
           <li class="nav-link" role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/collection">Collection</a> </li>
           <li class="nav-link"  role="presentation" routerLinkActive="active"><a routerLink="/favourites">Favourites</a> </li>
           <li class="nav-link" role="presentation" routerLinkActive="active"><a routerLink="/wishlist">Wishlist</a> </li>
         </ul>
+    </div>
     </div>
     <div class="row">
         <!--<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">-->
@@ -46,5 +47,3 @@
     </div>
   </div>
 </div>
-  <!--</div>-->
-<!--</div>-->

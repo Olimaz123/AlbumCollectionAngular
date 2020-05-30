@@ -18,12 +18,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const appRoutes: Routes = [
   { path: '', component: CollectionComponent},
   { path: 'wishlist', component: WishlistComponent},
   { path: 'favourites', component: FavouritesComponent},
-  { path: 'collection', component: CollectionComponent}
+  { path: 'collection', component: CollectionComponent},
+  { path: 'results', component: SearchResultsComponent}
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     CollectionComponent,
     FavouritesComponent,
     WishlistComponent,
-    EditAlbumComponent
+    EditAlbumComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     ItemDetailsComponent,
-    EditAlbumComponent]
+    EditAlbumComponent,
+    SearchResultsComponent]
 })
 export class AppModule { }
 

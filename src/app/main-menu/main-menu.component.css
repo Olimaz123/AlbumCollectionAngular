@@ -14,7 +14,14 @@
 #content {
   margin-left: 25px;
   margin-top: 10px;
-  width: 100vh;
+  width: 100%;
 }
 
+app-favourites{
+  width: 100%;
+}
+
+app-wishlist{
+  width: 100%;
+}
 

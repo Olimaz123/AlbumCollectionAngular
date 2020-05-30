@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {Album} from '../album.model';
 import {AlbumsService} from '../albums.service';
@@ -9,9 +9,6 @@ import {AlbumsService} from '../albums.service';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-
-  // @Output() albumEnter = new EventEmitter<{artist: string, album: string, type: string, year: number,
-  //     label: string, collection: boolean, fav: boolean, wish: boolean}>();
 
   types = [
     {name: 'LP', value: 'LP'},
@@ -64,6 +61,19 @@ export class AddItemComponent implements OnInit {
     } else {
       this.album.inFavs = false;
     }
+    if (this.album.album === '') {
+      this.album.album = 'Unknown album';
+    }
+    if (this.album.artist === '') {
+      this.album.artist = 'Unknown artist';
+    }
+    if (this.album.label === '') {
+      this.album.label = 'Unknown label';
+    }
+    if (this.album.year === null) {
+      this.album.year = 2020;
+    }
+
     console.log(this.album);
     const newAlbum: Album = this.album;
     this.albumService.addAlbum(newAlbum).subscribe(
@@ -72,5 +82,4 @@ export class AddItemComponent implements OnInit {
     );
     this.dialogRef.close();
   }
-
 }

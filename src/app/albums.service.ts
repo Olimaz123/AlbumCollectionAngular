@@ -7,13 +7,20 @@ import {Album} from './album.model';
   providedIn: 'root'
 })
 export class AlbumsService {
-  albums: Album[];
+  public searchTerm: string;
 
   constructor(private http: HttpClient) {}
+  albums: Album[];
 
   getAlbums(): Observable<Album[]> {
     const url = 'http://localhost:3000/albums?inCollection=true';
     return this.http.get<Album[]>(url);
+  }
+  searchAlbum(term: string): Observable<Album[]> {
+    this.albums = [];
+    const urlalbum = 'http://localhost:3000/albums?album_like=' + term;
+    const urlartist = 'http://localhost:3000/albums?artist_like=' + term;
+    return this.http.get<Album[]>(urlalbum);
   }
 
   addAlbum(album: Album): Observable<Album> {
@@ -46,6 +53,7 @@ export class AlbumsService {
     const url = 'http://localhost:3000/albums/' + album.id;
     return this.http.put<Album>(url, album);
   }
+
 }
 
 
