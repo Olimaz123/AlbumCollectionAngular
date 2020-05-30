@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/index';
 import {HttpClient} from '@angular/common/http';
 import {Album} from './album.model';
-// import { BehaviorSubject} from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +9,7 @@ import {Album} from './album.model';
 export class AlbumsService {
   albums: Album[];
 
-  // private albumToFind = new BehaviorSubject<number>(1);
-  // currentAlbum = this.albumToFind.asObservable();
-
   constructor(private http: HttpClient) {}
-
-  // changeAlbum(album: number) {
-  //   this.albumToFind.next(album);
-  // }
 
   getAlbums(): Observable<Album[]> {
     const url = 'http://localhost:3000/albums?inCollection=true';

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Album} from "../album.model";
-import {AlbumsService} from "../albums.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {Album} from '../album.model';
+import {AlbumsService} from '../albums.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-album',
@@ -63,5 +63,4 @@ export class EditAlbumComponent implements OnInit {
       }
     );
   }
-
 }

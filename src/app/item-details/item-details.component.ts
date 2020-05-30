@@ -48,7 +48,37 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onDelete() {
+    const modalRef = this.modalService.open(ConfirmComponent);
+    modalRef.componentInstance.albumid = this.albumid;
+    // this.albumService.deleteAlbum(this.albumid).subscribe();
+    // console.log('deleting album');
+  }
+}
+
+
+@Component({
+  template: `
+  <div class="modal-header">
+    <h1>Delete Album?</h1>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete this album?</p>
+    <p><strong>This action can not be reverted.</strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancel</button>
+    <a href="" type="button" class="btn btn-danger" (click)="onDelete()">Delete</a>
+  </div>
+  `
+})
+export class ConfirmComponent {
+
+  @Input() public albumid;
+  constructor(public activeModal: NgbActiveModal, private albumService: AlbumsService) {
+  }
+
+  onDelete() {
     this.albumService.deleteAlbum(this.albumid).subscribe();
-    console.log('deleting album');
+    console.log('deleting');
   }
 }

@@ -40,7 +40,7 @@ export class CollectionComponent implements OnInit {
     console.log('opening details');
     console.log(albumToOpen);
     this.albumid = albumToOpen;
-    const modalRef = this.modalService.open(ItemDetailsComponent, {centered: true});
+    const modalRef = this.modalService.open(ItemDetailsComponent);
     modalRef.componentInstance.albumid = this.albumid;
   }
 }
