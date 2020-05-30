@@ -25,7 +25,7 @@
     </div>
     <div class="col">
       <div class="form-check">
-        <input type="checkbox" name="favourite" class="form-check-input" id="favCheck" value="" [(ngModel)]="album.inFavs">
+        <input type="checkbox" name="favourite" class="form-check-input" id="favCheck" [(ngModel)]="inFaV">
         <label for="favCheck" class="form-check-label">Add to favourites?</label>
       </div>
       <div class="form-check">
@@ -50,7 +50,7 @@
   <p></p>
 
   <footer>
-    <button type="submit" class="btn btn-primary" id="saveButton" (click)="saveAlbum()">Save Album</button>
+    <a href="" type="submit" class="btn btn-primary" id="saveButton" (click)="saveAlbum()">Save Album</a>
     <button type="button" class="btn btn-danger" id="cancelButton" (click)="closeDialog()">Cancel</button>
   </footer>
 </form>

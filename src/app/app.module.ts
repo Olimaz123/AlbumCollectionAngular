@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { TitleFormatPipe } from './title-format.pipe';
+import { AlbumTitleFormatPipe } from './title-format.pipe';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { AddItemComponent } from './add-item/add-item.component';
@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditAlbumComponent } from './edit-album/edit-album.component';
 
 const appRoutes: Routes = [
   { path: '', component: CollectionComponent},
@@ -28,13 +29,14 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TitleFormatPipe,
+    AlbumTitleFormatPipe,
     MainMenuComponent,
     ItemDetailsComponent,
     AddItemComponent,
     CollectionComponent,
     FavouritesComponent,
-    WishlistComponent
+    WishlistComponent,
+    EditAlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,9 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ItemDetailsComponent]
+  entryComponents: [
+    ItemDetailsComponent,
+    EditAlbumComponent]
 })
 export class AppModule { }
 

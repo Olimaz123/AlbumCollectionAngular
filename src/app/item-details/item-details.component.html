@@ -1,6 +1,43 @@
-<p>item-details works!</p>
-<p>{{albumid}}</p>
-<p>{{album.album}}</p>
-<!--<p>{{album.album}}</p>-->
+  <div class="modal-header">
+    <div class="col col-8" id="albumTitle">
+      <h1>{{album.album| titleFormat}}</h1>
+    </div>
+    <div>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="col col-6" id="albumArtist">
+        Artist: {{album.artist}}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col col-4" id="albumYear">
+        Release year: {{album.year}}
+      </div>
+      <div class="col col-4" id="albumType">
+        Release type: {{album.type}}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col" id="albumLabel">
+        Release label: {{album.label| titlecase}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-primary" id="editDropdown" ngbDropdownToggle>Edit album</button>
+        <div ngbDropdownMenu aria-labelledby="editDropdown">
+          <button ngbDropdownItem (click)="onEdit()">Edit Album</button>
+          <a href="" ngbDropdownItem (click)="onDelete()">Delete Album</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!--<button class="btn btn-danger" (click)="close()">CLOSE</button>-->
+

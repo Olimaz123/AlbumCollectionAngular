@@ -43,6 +43,50 @@
       "inCollection": true,
       "inFavs": false,
       "inWishlist": false
+    },
+    {
+      "id": 5,
+      "album": "FAVALBUM",
+      "artist": "FAVTEST",
+      "year": "1502",
+      "type": "Digital",
+      "label": "FAVLABEL",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
+    },
+    {
+      "id": 10,
+      "album": "FAVALBUM",
+      "artist": "FAVTEST",
+      "year": "1508",
+      "type": "Cassette",
+      "label": "FAVLABEL",
+      "inCollection": false,
+      "inFavs": true,
+      "inWishlist": true
+    },
+    {
+      "id": 11,
+      "album": "WISHALBUM",
+      "artist": "WISHTEST",
+      "year": "1909",
+      "type": "Digital",
+      "label": "WISHLABEL",
+      "inCollection": false,
+      "inFavs": false,
+      "inWishlist": true
+    },
+    {
+      "id": 12,
+      "album": "EDITALBUM",
+      "artist": "EDITTEST",
+      "year": "1201",
+      "type": "LP",
+      "label": "EDITLABEL",
+      "inCollection": true,
+      "inFavs": false,
+      "inWishlist": false
     }
   ]
 }

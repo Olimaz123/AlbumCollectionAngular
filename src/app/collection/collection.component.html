@@ -1,13 +1,8 @@
 <div id="collection-content">
-  <!--<div *ngFor="let album of albums ">-->
-    <!--{{album.album}}-->
-  <!--</div>-->
   <div>
     <mat-card *ngFor="let album of albums">
-              <!--[albumnumber]="album.id">-->
-      <!--<image mat-card-image src="src/album.png" alt="Cover Image"></image>-->
       <mat-card-title>
-        <a class="stretched-link" (click)="openDetails(album.id)">{{album.id}} - {{album.album}}</a>
+        <a class="stretched-link" (click)="openDetails(album.id)">{{album.id}} - {{album.album| titleFormat}}</a>
       </mat-card-title>
       <mat-card-subtitle>
         {{album.artist}}

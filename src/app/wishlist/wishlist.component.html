@@ -1,14 +1,14 @@
-<!--<ul class="nav nav-tabs">-->
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link" href="#">Collection</a>-->
-  <!--</li>-->
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link" href="#">Favourites</a>-->
-  <!--</li>-->
-  <!--<li class="nav-item active">-->
-    <!--<a class="nav-link" href="#">Wishlist</a>-->
-  <!--</li>-->
-<!--</ul>-->
 <div id="wishlist-content">
-  WISHLIST WORKS
+  <div>
+    <mat-card *ngFor="let album of albums">
+      <mat-card-title>
+        <a class="stretched-link" (click)="openDetails(album.id)">{{album.id}} - {{album.album| titleFormat}}</a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{album.artist}}
+      </mat-card-subtitle>
+    </mat-card>
+  </div>
 </div>
+
+

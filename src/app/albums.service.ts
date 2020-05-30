@@ -51,7 +51,7 @@ export class AlbumsService {
   }
 
   updateAlbum(album: Album): Observable<Album> {
-    const url = 'http://localhost:3000/albums' + album.id;
+    const url = 'http://localhost:3000/albums/' + album.id;
     return this.http.put<Album>(url, album);
   }
 }

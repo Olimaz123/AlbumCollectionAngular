@@ -23,6 +23,7 @@ export class AddItemComponent implements OnInit {
     {name: 'Other', value: 'Other'},
   ];
   inColl: boolean;
+  inFaV: boolean;
   selectedType: string;
   album: Album;
 
@@ -42,6 +43,7 @@ export class AddItemComponent implements OnInit {
     };
     this.selectedType = 'LP';
     this.inColl = true;
+    this.inFaV = false;
   }
 
   closeDialog() {
@@ -56,6 +58,11 @@ export class AddItemComponent implements OnInit {
     } else if (this.inColl === false) {
       this.album.inCollection = false;
       this.album.inWishlist = true;
+    }
+    if (this.inFaV === true) {
+      this.album.inFavs = true;
+    } else {
+      this.album.inFavs = false;
     }
     console.log(this.album);
     const newAlbum: Album = this.album;

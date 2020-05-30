@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
 import {Album} from '../album.model';
 import {AlbumsService} from '../albums.service';
+import {EditAlbumComponent} from '../edit-album/edit-album.component';
+import {NgbModal, NgbModalConfig, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {config} from 'rxjs/index';
 
 @Component({
   selector: 'app-item-details',
@@ -12,10 +14,8 @@ export class ItemDetailsComponent implements OnInit {
 
   @Input() public albumid;
 
-  // @Input() albumnumber: number;
   public album: Album;
-  // public albumid: number;
-  constructor(/*public dialogRef: MatDialogRef<ItemDetailsComponent>,*/ private albumService: AlbumsService) { }
+  constructor( private albumService: AlbumsService,  private modalService: NgbModal, public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
     this.album = {
@@ -29,8 +29,6 @@ export class ItemDetailsComponent implements OnInit {
       inFavs: false,
       inWishlist: false
     };
-    // this.albumid = 0;
-    // this.albumService.currentAlbum.subscribe(response => this.albumid = response);
     this.getAlbum();
     console.log(this.albumid);
   }
@@ -43,12 +41,14 @@ export class ItemDetailsComponent implements OnInit {
     );
   }
 
-  // receiveData($event) {
-  //   this.albumid = $event;
-  // }
+  onEdit() {
+    console.log('editing album');
+    const modalRef = this.modalService.open(EditAlbumComponent);
+    modalRef.componentInstance.albumid = this.albumid;
+  }
 
-  // close() {
-  //   this.dialogRef.close();
-  // }
-
+  onDelete() {
+    this.albumService.deleteAlbum(this.albumid).subscribe();
+    console.log('deleting album');
+  }
 }

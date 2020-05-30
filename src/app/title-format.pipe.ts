@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'titleFormat'
 })
-export class TitleFormatPipe implements PipeTransform {
+export class AlbumTitleFormatPipe implements PipeTransform {
 
   transform(value: string): string {
     if (!value) {
@@ -11,8 +11,9 @@ export class TitleFormatPipe implements PipeTransform {
     }
 
     const words = value.split(' ');
+
     for (let i = 0; i < words.length; i++) {
-      if (i === 0 || !this.isPrePosition(words[i])) {
+      if (i === 0 || !this.isPrep(words[i])) {
         words[i] = this.toTitleCase(words[i]);
       } else {
         words[i] = words[i].toLowerCase();
@@ -21,11 +22,21 @@ export class TitleFormatPipe implements PipeTransform {
     return words.join(' ');
   }
 
-  isPrePosition(word: string): boolean {
-    const preposition = [
-      'of', 'the', 'if', 'an', 'a', 'de', 'het', 'een', 'at'
+  isPrep(word: string): boolean {
+    const preps = [
+      'of',
+      'the',
+      'if',
+      'an',
+      'a',
+      'at',
+      'and',
+      'von',
+      'from',
+      'to'
     ];
-    return preposition.includes(word.toLowerCase());
+
+    return preps.includes(word.toLowerCase());
   }
 
   toTitleCase(word: string): string {

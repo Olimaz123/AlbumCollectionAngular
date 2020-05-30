@@ -1,8 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AlbumsService} from '../albums.service';
 import {Album} from '../album.model';
-import {MatCard} from '@angular/material/card';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ItemDetailsComponent} from '../item-details/item-details.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,11 +16,9 @@ export class CollectionComponent implements OnInit {
 
   public albums: Album[];
   public albumid: number;
-  // @Output() dataEvent = new EventEmitter<number>();
-  constructor(private albumService: AlbumsService, /*private matDialog: MatDialog,*/ private modalService: NgbModal) { }
+  constructor(private albumService: AlbumsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    // this.albumsService.currentAlbum.subscribe(albumid => this.albumid = albumid);
     this.albums = [];
     this.albumid = null;
     this.onGetAlbums();
@@ -44,14 +40,7 @@ export class CollectionComponent implements OnInit {
     console.log('opening details');
     console.log(albumToOpen);
     this.albumid = albumToOpen;
-    const modalRef = this.modalService.open(ItemDetailsComponent);
+    const modalRef = this.modalService.open(ItemDetailsComponent, {centered: true});
     modalRef.componentInstance.albumid = this.albumid;
-    // this.albumService.changeAlbum(albumId);
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.id = 'item-details';
-    // dialogConfig.height = '600px';
-    // dialogConfig.width = '500px';
-    // const modalDialog = this.matDialog.open(ItemDetailsComponent, dialogConfig);
   }
 }

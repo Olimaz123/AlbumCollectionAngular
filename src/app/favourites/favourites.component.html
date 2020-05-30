@@ -1,14 +1,14 @@
-<!--<ul class="nav nav-tabs">-->
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link" href="#">Collection</a>-->
-  <!--</li>-->
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link active" href="#">Favourites</a>-->
-  <!--</li>-->
-  <!--<li class="nav-item">-->
-    <!--<a class="nav-link" href="#">Wishlist</a>-->
-  <!--</li>-->
-<!--</ul>-->
 <div id="favourites-content">
-  FAVOURITES WORKS
+  <div>
+    <mat-card *ngFor="let album of albums">
+      <mat-card-title>
+        <a class="stretched-link" (click)="openDetails(album.id)">{{album.id}} - {{album.album| titleFormat}}</a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{album.artist}}
+      </mat-card-subtitle>
+    </mat-card>
+  </div>
 </div>
+
+
