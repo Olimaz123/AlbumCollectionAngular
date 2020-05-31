@@ -2,8 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Album} from '../album.model';
 import {AlbumsService} from '../albums.service';
 import {EditAlbumComponent} from '../edit-album/edit-album.component';
-import {NgbModal, NgbModalConfig, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {config} from 'rxjs/index';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-item-details',
@@ -30,12 +29,12 @@ export class ItemDetailsComponent implements OnInit {
       inWishlist: false
     };
     this.getAlbum();
-    console.log(this.albumid);
   }
 
   getAlbum() {
     this.albumService.getAlbum(this.albumid).subscribe(
       (response: Album) => {
+        console.log(response);
         this.album = response;
       }
     );
@@ -50,12 +49,45 @@ export class ItemDetailsComponent implements OnInit {
   onDelete() {
     const modalRef = this.modalService.open(ConfirmComponent);
     modalRef.componentInstance.albumid = this.albumid;
-    // this.albumService.deleteAlbum(this.albumid).subscribe();
-    // console.log('deleting album');
+  }
+
+  removeFavs() {
+    this.album.inFavs = false;
+    this.activeModal.close();
+    const changedAlbum: Album = this.album;
+    this.albumService.updateAlbum(changedAlbum).subscribe(
+      () => console.log(changedAlbum)
+    );
+  }
+  addToFavs() {
+    this.album.inFavs = true;
+    this.activeModal.close();
+    const changedAlbum: Album = this.album;
+    this.albumService.updateAlbum(changedAlbum).subscribe(
+      () => console.log(changedAlbum)
+    );
+  }
+  addToColl() {
+    this.album.inCollection = true;
+    this.album.inWishlist = false;
+    this.activeModal.close();
+    const changedAlbum: Album = this.album;
+    this.albumService.updateAlbum(changedAlbum).subscribe(
+      () => console.log(changedAlbum)
+    );
+  }
+  addToWish() {
+    this.album.inWishlist = true;
+    this.album.inCollection = false;
+    this.activeModal.close();
+    const changedAlbum: Album = this.album;
+    this.albumService.updateAlbum(changedAlbum).subscribe(
+      () => console.log(changedAlbum)
+    );
   }
 }
 
-
+// delete confirmation
 @Component({
   template: `
   <div class="modal-header">

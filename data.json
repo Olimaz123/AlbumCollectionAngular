@@ -19,52 +19,8 @@
       "type": "LP",
       "label": "Brain Records",
       "inCollection": true,
-      "inFavs": false,
-      "inWishlist": false
-    },
-    {
-      "id": 3,
-      "album": "TEST",
-      "artist": "TEST",
-      "year": "2002",
-      "type": "LP",
-      "label": "TEST",
-      "inCollection": true,
-      "inFavs": false,
-      "inWishlist": false
-    },
-    {
-      "id": 4,
-      "album": "TESTALBUM",
-      "artist": "TESTNAME",
-      "year": "2015",
-      "type": "Cassette",
-      "label": "TESTLABEL",
-      "inCollection": true,
-      "inFavs": false,
-      "inWishlist": false
-    },
-    {
-      "id": 5,
-      "album": "FAVALBUM",
-      "artist": "FAVTEST",
-      "year": "1502",
-      "type": "Digital",
-      "label": "FAVLABEL",
-      "inCollection": true,
-      "inFavs": false,
-      "inWishlist": false
-    },
-    {
-      "id": 10,
-      "album": "FAVALBUM",
-      "artist": "FAVTEST",
-      "year": "1508",
-      "type": "Cassette",
-      "label": "FAVLABEL",
-      "inCollection": false,
       "inFavs": true,
-      "inWishlist": true
+      "inWishlist": false
     },
     {
       "id": 11,
@@ -78,17 +34,6 @@
       "inWishlist": true
     },
     {
-      "id": 12,
-      "album": "EDITALBUM",
-      "artist": "EDITTEST",
-      "year": "1201",
-      "type": "LP",
-      "label": "EDITLABEL",
-      "inCollection": true,
-      "inFavs": false,
-      "inWishlist": false
-    },
-    {
       "id": 13,
       "album": "Heir To Despair",
       "artist": "SIGH",
@@ -96,8 +41,30 @@
       "type": "LP",
       "label": "unknown",
       "inCollection": false,
-      "inFavs": false,
+      "inFavs": true,
       "inWishlist": true
+    },
+    {
+      "id": 14,
+      "album": "edit",
+      "artist": "edit",
+      "year": 2020,
+      "type": "LP",
+      "label": "label",
+      "inCollection": false,
+      "inFavs": true,
+      "inWishlist": true
+    },
+    {
+      "id": 15,
+      "album": "Litourgiya",
+      "artist": "Batushka",
+      "year": 2015,
+      "type": "LP",
+      "label": "Witching hour records",
+      "inCollection": true,
+      "inFavs": true,
+      "inWishlist": false
     }
   ]
 }

@@ -1,6 +1,13 @@
   <div class="modal-header">
-    <div class="col col-8" id="albumTitle">
-      <h1>{{album.album| titleFormat}}</h1>
+    <div class="col col-10" id="albumTitle">
+      <h1>
+        <div class="col">
+          {{album.album| titleFormat}}
+          <!--show favourite and / or wishlist icon-->
+          <span *ngIf="album.inFavs">&nbsp; &#11088;</span>
+          <span *ngIf="album.inWishlist">&nbsp; 📜</span>
+        </div>
+      </h1>
     </div>
     <div>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
@@ -32,9 +39,14 @@
     <div class="col">
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-primary" id="editDropdown" ngbDropdownToggle>Edit album</button>
+        <!--dropdown buttons-->
         <div ngbDropdownMenu aria-labelledby="editDropdown">
           <button ngbDropdownItem (click)="onEdit()">Edit Album</button>
           <button ngbDropdownItem (click)="onDelete()">Delete Album</button>
+          <a href="" ngbDropdownItem *ngIf="album.inFavs" (click)="removeFavs()">Remove from favorites</a>
+          <a href="" ngbDropdownItem *ngIf="album.inFavs == false" (click)="addToFavs()">Add to favorites</a>
+          <a href="" ngbDropdownItem *ngIf="album.inWishlist" (click)="addToColl()">Add to collection</a>
+          <a href="" ngbDropdownItem *ngIf="album.inCollection" (click)="addToWish()">Add to Wishlist</a>
         </div>
       </div>
     </div>

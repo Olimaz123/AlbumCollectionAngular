@@ -4,7 +4,6 @@ import {Album} from '../album.model';
 import {ItemDetailsComponent} from '../item-details/item-details.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -27,8 +26,6 @@ export class CollectionComponent implements OnInit {
   onGetAlbums() {
     this.albumService.getAlbums().subscribe(
       (response: Album[]) => {
-        JSON.parse(JSON.stringify(response));
-        console.log(response);
         this.albums = response;
       },
       (error) => console.log(error),
@@ -37,8 +34,6 @@ export class CollectionComponent implements OnInit {
   }
 
   openDetails(albumToOpen: number) {
-    console.log('opening details');
-    console.log(albumToOpen);
     this.albumid = albumToOpen;
     const modalRef = this.modalService.open(ItemDetailsComponent);
     modalRef.componentInstance.albumid = this.albumid;

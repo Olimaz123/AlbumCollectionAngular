@@ -1,13 +1,14 @@
 <!--top navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <span class="navbar-brand mb-0 h1">Not-Ify</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+  <img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top">
+  <a href="" class="navbar-brand mb-0 h1">
+    <span id="siteName" class="mt-3 ml-2">Not-Ify</span></a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/collection">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 ">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="Search" [(ngModel)]="searchTerm">
       <a class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/results" (click)="onSearch()">Search</a>
     </form>
@@ -19,15 +20,9 @@
   <!--sidebar component-->
   <nav id="sidebar">
     <ul class="list-unstyled components">
-      <p></p>
       <li>
-        <button class="btn btn-primary" (click)="openDialog()">ADD ITEM</button>
+        <button id="addButton" class="btn btn-primary" (click)="openDialog()">ADD ITEM</button>
       </li>
-      <p></p>
-      <!--<li>-->
-        <!--<button class="btn btn-outline-danger">DELETE</button>-->
-      <!--</li>-->
-      <p></p>
     </ul>
   </nav>
   <!--content goes here-->
@@ -42,7 +37,6 @@
     </div>
     </div>
     <div class="row">
-        <!--<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">-->
       <router-outlet></router-outlet>
     </div>
   </div>

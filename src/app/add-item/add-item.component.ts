@@ -23,10 +23,12 @@ export class AddItemComponent implements OnInit {
   inFaV: boolean;
   selectedType: string;
   album: Album;
+  public state: string;
 
   constructor(public dialogRef: MatDialogRef<AddItemComponent>, private albumService: AlbumsService) { }
 
   ngOnInit(): void {
+    this.state = 'disabled';
     this.album = {
       id: null,
       album: '',
@@ -38,6 +40,7 @@ export class AddItemComponent implements OnInit {
       inFavs: false,
       inWishlist: false
     };
+    // default type is LP
     this.selectedType = 'LP';
     this.inColl = true;
     this.inFaV = false;
@@ -45,6 +48,15 @@ export class AddItemComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  // checks if title and artist is filled in
+  checkReqs() {
+    if (this.album.album !== '' && this.album.artist !== '') {
+      this.state = '';
+    } else {
+      this.state = 'disabled';
+    }
   }
 
   saveAlbum() {
@@ -61,20 +73,20 @@ export class AddItemComponent implements OnInit {
     } else {
       this.album.inFavs = false;
     }
+    // just for safety, but should never be used
     if (this.album.album === '') {
       this.album.album = 'Unknown album';
     }
     if (this.album.artist === '') {
       this.album.artist = 'Unknown artist';
     }
+    // default values
     if (this.album.label === '') {
       this.album.label = 'Unknown label';
     }
     if (this.album.year === null) {
-      this.album.year = 2020;
+      this.album.year = 1900;
     }
-
-    console.log(this.album);
     const newAlbum: Album = this.album;
     this.albumService.addAlbum(newAlbum).subscribe(
       (response) => console.log(response),

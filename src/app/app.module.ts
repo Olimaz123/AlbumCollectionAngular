@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
@@ -49,9 +49,10 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
     NgbModule
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -60,4 +61,3 @@ const appRoutes: Routes = [
     SearchResultsComponent]
 })
 export class AppModule { }
-

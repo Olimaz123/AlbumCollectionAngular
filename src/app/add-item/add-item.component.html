@@ -1,20 +1,24 @@
-<h2>Add Album</h2>
+<h2><strong>Add Album</strong></h2>
 
 <form>
+  <!--title and artist-->
   <div class="form-row">
     <div class="col">
-      <input type="text" name="artist" class="form-control" placeholder="artist name" maxlength="50" required [(ngModel)]="album.artist">
+      <input type="text" name="artist" class="form-control" placeholder="artist name (required)" required maxlength="50"  [(ngModel)]="album.artist" (change)="checkReqs()" (keydown)="checkReqs()">
     </div>
     <div class="col">
-      <input type="text" name="album" class="form-control" placeholder="album title" maxlength="50" required [(ngModel)]="album.album">
+      <input type="text" name="album" class="form-control" placeholder="album title (required)" required maxlength="50"  [(ngModel)]="album.album" (change)="checkReqs()" (keydown)="checkReqs()">
     </div>
   </div>
 
   <p></p>
-
+  <!--year, type and location-->
   <div class="form-row">
     <div class="col">
-      <input type="text" name="Year" class="form-control" inputmode="numeric" placeholder="2020" maxlength="4" pattern="[0-9]*" required [(ngModel)]="album.year">
+      <input
+        type="number" name="Year" class="form-control" inputmode="numeric" placeholder="2020"
+        oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="4" min="1900" required [(ngModel)]="album.year">
     </div>
     <div class="col">
       <select name="typeselect" class="custom-select" id="typeselect" [(ngModel)]="selectedType">
@@ -40,7 +44,7 @@
   </div>
 
   <p></p>
-
+  <!--label-->
   <div class="form-row">
     <div class="col">
       <input type="text" name="label" class="form-control" placeholder="Record label" maxlength="50" required [(ngModel)]="album.label">
@@ -48,9 +52,9 @@
   </div>
 
   <p></p>
-
+  <!--save button is disabled until title and artist is filled in-->
   <footer>
-    <a href="" type="submit" class="btn btn-primary" id="saveButton" (click)="saveAlbum()">Save Album</a>
+    <a href="" type="submit" class="btn btn-primary {{state}}" id="saveButton" (click)="saveAlbum()" >Save Album</a>
     <button type="button" class="btn btn-danger" id="cancelButton" (click)="closeDialog()">Cancel</button>
   </footer>
 </form>

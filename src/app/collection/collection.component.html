@@ -5,7 +5,10 @@
         <div class="card">
           <div class="card-body">
             <h3 class="card-title">
-             <a class="stretched-link" (click)="openDetails(album.id)"><strong>{{album.album}}</strong></a>
+              <!--stretched link makes entire card clickable-->
+             <a class="stretched-link" (click)="openDetails(album.id)"><strong>{{album.album| titleFormat}}</strong></a>
+              <!--if favourite, show star-->
+              <span *ngIf="album.inFavs">&nbsp; &#11088;</span>
             </h3>
             <h4 class="card-subtitle">{{album.artist}}</h4>
           </div>

@@ -14,7 +14,7 @@ export class FavouritesComponent implements OnInit {
 
   public albums: Album[];
   public albumid: number;
-  constructor(private albumService: AlbumsService, /*private matDialog: MatDialog,*/ private modalService: NgbModal) { }
+  constructor(private albumService: AlbumsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.albums = [];
@@ -35,8 +35,6 @@ export class FavouritesComponent implements OnInit {
   }
 
   openDetails(albumToOpen: number) {
-    console.log('opening details');
-    console.log(albumToOpen);
     this.albumid = albumToOpen;
     const modalRef = this.modalService.open(ItemDetailsComponent);
     modalRef.componentInstance.albumid = this.albumid;

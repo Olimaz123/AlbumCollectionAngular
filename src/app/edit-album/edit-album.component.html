@@ -6,16 +6,16 @@
   <div class="modal-body">
     <div class="form-row">
       <div class="col">
-        <input type="text" name="artist" class="form-control" maxlength="50" required [(ngModel)]="album.artist">
+        <input type="text" name="artist" class="form-control" maxlength="50" required [(ngModel)]="album.artist" (change)="checkReqs()" (keydown)="checkReqs()">
       </div>
       <div class="col">
-        <input type="text" name="album" class="form-control" maxlength="50" required [(ngModel)]="album.album">
+        <input type="text" name="album" class="form-control" maxlength="50" required [(ngModel)]="album.album" (change)="checkReqs()" (keydown)="checkReqs()">
       </div>
     </div>
   </div>
   <p></p>
   <div class="form-row">
-    <div class="col">
+    <div class="col" id="yearCol">
       <input type="text" name="Year" class="form-control" inputmode="numeric" maxlength="4" pattern="[0-9]*" required [(ngModel)]="album.year">
     </div>
     <div class="col">
@@ -41,7 +41,7 @@
     </div>
   </div>
   <p></p>
-  <div class="form-row">
+  <div class="form-row" id="labelRow">
     <div class="col">
       <input type="text" name="label" class="form-control" maxlength="50" required [(ngModel)]="album.label">
     </div>
@@ -49,6 +49,6 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-danger" (click)="activeModal.dismiss()">Cancel</button>
-    <a href="" type="button" class="btn btn-primary" (click)="saveEdit()">Save</a>
+    <a href="" type="button" class="btn btn-primary {{state}}" (click)="saveEdit()">Save</a>
   </div>
 </form>

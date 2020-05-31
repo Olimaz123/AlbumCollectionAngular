@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Album} from '../album.model';
 import {AlbumsService} from '../albums.service';
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-album',
@@ -24,6 +24,7 @@ export class EditAlbumComponent implements OnInit {
   inColl: boolean;
   inFaV: boolean;
   selectedType: string;
+  public state: string;
   constructor(private albumService: AlbumsService, public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
@@ -39,28 +40,55 @@ export class EditAlbumComponent implements OnInit {
       inWishlist: null
     };
     this.getAlbum();
-    // this.selectedType.
-    this.inColl = true;
-    // this.inFaV = true;
-    if (this.album.inFavs === true) {
-      this.inFaV = true;
-    }
   }
 
   getAlbum() {
     this.albumService.getAlbum(this.albumid).subscribe(
-      (response) => this.album = response,
-      (error) => console.log(error),
-      () => console.log(this.album)
+      (response) => {
+        if (response.inFavs === true) {
+          this.inFaV = true;
+        } else {
+          this.inFaV = false;
+        }
+        if (response.inCollection === true) {
+          this.inColl = true;
+        } else {
+          this.inColl = false;
+        }
+        this.selectedType = response.type;
+        this.album = response;
+        },
+          (error) => console.log(error),
+          () => console.log(this.album)
     );
   }
 
+  // checks if title and artist are filled in
+  checkReqs() {
+    if (this.album.album !== '' && this.album.artist !== '') {
+      this.state = '';
+    } else {
+      this.state = 'disabled';
+    }
+  }
+
   saveEdit() {
+    this.album.type = this.selectedType;
+    if (this.inColl === true) {
+      this.album.inCollection = true;
+      this.album.inWishlist = false;
+    } else {
+      this.album.inCollection = false;
+      this.album.inWishlist = true;
+    }
+    if (this.inFaV === true) {
+      this.album.inFavs = true;
+    } else {
+      this.album.inFavs = false;
+    }
     const changedAlbum: Album = this.album;
     this.albumService.updateAlbum(changedAlbum).subscribe(
-      (response) => {
-        console.log(changedAlbum);
-      }
+      () => console.log(changedAlbum)
     );
   }
 }

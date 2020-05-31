@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AddItemComponent} from '../add-item/add-item.component';
-import {AlbumsService} from "../albums.service";
+import {AlbumsService} from '../albums.service';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
+import {filter} from 'rxjs/internal/operators';
+import {Album} from '../album.model';
 
 @Component({
   selector: 'app-main-menu',
@@ -11,9 +14,14 @@ import {AlbumsService} from "../albums.service";
 export class MainMenuComponent implements OnInit {
 
   public searchTerm: string;
-  constructor(public matDialog: MatDialog, public albumService: AlbumsService) { }
+  public albums: Album[];
+  constructor(public matDialog: MatDialog, public albumService: AlbumsService, public router: Router) { }
 
   ngOnInit(): void {
+    // this.router.events.pipe(
+    //   filter((event: RouterEvent) => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    // });
     this.searchTerm = '';
   }
 
@@ -28,7 +36,6 @@ export class MainMenuComponent implements OnInit {
 
   onSearch() {
     this.albumService.searchTerm = this.searchTerm;
-    console.log(this.searchTerm);
   }
-
 }
+

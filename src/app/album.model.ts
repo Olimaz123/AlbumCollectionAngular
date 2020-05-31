@@ -1,3 +1,4 @@
+// album class model
 export class Album {
   id: number;
   artist: string;

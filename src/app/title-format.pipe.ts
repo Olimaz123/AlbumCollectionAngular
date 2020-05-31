@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'titleFormat'
 })
+// sets first letter of first and every non-preposition word to uppercase
 export class AlbumTitleFormatPipe implements PipeTransform {
 
   transform(value: string): string {
@@ -22,6 +23,7 @@ export class AlbumTitleFormatPipe implements PipeTransform {
     return words.join(' ');
   }
 
+  // preposition array
   isPrep(word: string): boolean {
     const preps = [
       'of',
