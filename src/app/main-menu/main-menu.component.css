@@ -30,6 +30,9 @@ app-wishlist{
   margin-left: 40px;
   margin-top: 80%;
   position: relative;
-
 }
 
+.nav-link{
+  background-color: #e0e0e0;
+  border: solid 0.5px black;
+}
